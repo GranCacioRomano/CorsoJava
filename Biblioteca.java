@@ -5,24 +5,36 @@ public class Biblioteca {
      
      public void aggiungiLibro(Libro libro) {
          libri.add(libro);
-         System.out.println("Libro Aggiunto");
      }
      public void visualizzaLibri(){
          for (Libro libro : libri) {
              System.out.println(libro.toString());
          }
      }
-     public void cercaLibro(String titolo){
+     public Libro cercaLibro(String titolo){
          for (Libro libro : libri) {
              if (libro.getTitolo().equals(titolo)) {
-                 System.out.println(libro.toString());
+                 return libro;
              }
-         }
+            }
+            return null;
      }
-     public void effettuaPrestito(Libro libro){
-         libro.setNumeroCopie(libro.getNumeroCopie()-1);
-     }
-     public void restituisciLibro(Libro libro){
-         libro.setNumeroCopie(libro.getNumeroCopie()+1);
-     }
+     public boolean effettuaPrestito(String titolo) {
+        Libro libro = cercaLibro(titolo);
+        if (libro != null && libro.getNumeroCopie() > 0) {
+            libro.setNumeroCopie(libro.getNumeroCopie() - 1);
+            return true;
+        }
+        return false;
+    }
+
+    // Bonus: ritorna libro
+    public boolean ritornaLibro(String titolo) {
+        Libro libro = cercaLibro(titolo);
+        if (libro != null) {
+            libro.setNumeroCopie(libro.getNumeroCopie() + 1);
+            return true;
+        }
+        return false;
+    }
 }
