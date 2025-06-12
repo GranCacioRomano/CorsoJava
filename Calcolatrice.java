@@ -38,12 +38,12 @@ public class Calcolatrice {
                         risultati[i] = primoNumero / secondoNumero;
                     } else {
                         System.out.println("Errore: divisione per zero.");
-                        risultati[i] = 0; // Imposta a zero in caso di errore
+                        risultati[i] = 0; 
                     }
                     break;
                 default:
                     System.out.println("Operazione non valida.");
-                    risultati[i] = 0; // Imposta a zero in caso di operazione non valida
+                    risultati[i] = 0; 
             }
             System.out.println("Risultato del calcolo " + (i + 1) + ": " + risultati[i]);
             sommaTotale += risultati[i];
