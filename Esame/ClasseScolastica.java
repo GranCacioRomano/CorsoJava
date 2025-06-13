@@ -121,20 +121,27 @@ public class ClasseScolastica {
         return ris;
     }
 
-   public void effettuaInterrogazione(String materia) {
+   public void effettuaInterrogazione(String materia) 
+   {
         Docente docenteMateria = null;
-        for (Docente d : listaDocenti) {
-            if (d.getMateria().equalsIgnoreCase(materia)) {
+
+        for (Docente d : listaDocenti) 
+        {
+            if (d.getMateria().equalsIgnoreCase(materia)) 
+            {
                 docenteMateria = d;
                 break;
             }
         }
-        if (docenteMateria == null) {
+
+        if (docenteMateria == null) 
+        {
             System.out.println("Docente per la materia " + materia + " non trovato.");
             return;
         }
 
-        if (listaStudenti.isEmpty()) {
+        if (listaStudenti.isEmpty())
+        {
             System.out.println("Nessuno studente nella classe.");
             return;
         }
