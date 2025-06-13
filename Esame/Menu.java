@@ -49,6 +49,7 @@ public class Menu {
         Docente d1 = new Docente("Matematica", 1500.0, "Giuseppe", "Neri", 45);
         Docente d2 = new Docente("Italiano", 1400.0, "Laura", "Gialli", 38);
         Docente d3 = new Docente("Java", 3600.0, "Diego", "Rossi", 28);
+        
 
         classe1.aggiungiDocente(d1);
         classe1.aggiungiDocente(d2);

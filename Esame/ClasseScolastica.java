@@ -133,7 +133,7 @@ public class ClasseScolastica {
             if(docente.mediaVoti() > mediaMigliore)
             {
                 mediaMigliore = docente.mediaVoti();
-                ris = "Il miglior studente è " + docente.getNomeCompleto() + " con una media di " + mediaMigliore;
+                ris = "Il miglior docente è " + docente.getNomeCompleto() + " con una media di " + mediaMigliore;
             }
         }
 
