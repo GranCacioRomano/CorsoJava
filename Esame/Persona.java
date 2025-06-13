@@ -1,11 +1,11 @@
 package Esame;
+
 public abstract class Persona {
     private String nome;
     private String cognome;
     private int eta;
 
-    public Persona(String nome, String cognome, int eta)
-    {
+    public Persona(String nome, String cognome, int eta) {
         this.nome = nome;
         this.cognome = cognome;
         this.eta = eta;
@@ -13,39 +13,31 @@ public abstract class Persona {
 
     public abstract String descrizione();
 
-    public String getNome()
-    {
+    public String getNome() {
         return nome;
     }
 
-    public String getCognome()
-    {
+    public String getCognome() {
         return cognome;
     }
 
-    public String getNomeCompleto()
-    {
+    public String getNomeCompleto() {
         return nome + " " + cognome;
     }
 
-    public int getEta()
-    {
+    public int getEta() {
         return eta;
     }
 
-    public void setNome(String nome)
-    {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setCognome(String cognome)
-    {
+    public void setCognome(String cognome) {
         this.cognome = cognome;
     }
 
-    public void setEta(int eta)
-    {
+    public void setEta(int eta) {
         this.eta = eta;
     }
-
 }
