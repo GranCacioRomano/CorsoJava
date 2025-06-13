@@ -19,6 +19,9 @@ public class Docente extends Persona implements Valutabile {
 
     @Override
     public void valutaPrestazione() {
+        if (mediaVotiGenerale >= 7){
+            aumentaStipendio();
+        }
     }
 
     @Override
