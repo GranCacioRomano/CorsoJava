@@ -25,7 +25,7 @@ public class Menu {
             System.out.println("6. Esci");
     
             int scelta = tastiera.nextInt();
-            
+              
             switch (scelta) 
             {
                 case 1:
@@ -77,8 +77,6 @@ public class Menu {
                 break;
             }
         }while(continua);
-            
         tastiera.close();
     }
-
 }
