@@ -56,4 +56,23 @@ public class Scuola {
             System.out.println();
         }
     }
+
+    public ArrayList<ClasseScolastica> getClassi() 
+    {
+        return listaClassi;
+    }
+
+    public double calcolaMediaTotaleScuola() 
+    {
+        double somma = 0;
+        int numeroClassi = 0;
+
+        for (ClasseScolastica classe : listaClassi) 
+        {
+            somma += classe.calcolaMediaGenerale();
+            numeroClassi++;
+        }
+
+        return numeroClassi > 0 ? somma / numeroClassi : 0;
+    }
 }
