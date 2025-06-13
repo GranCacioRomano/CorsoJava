@@ -7,6 +7,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Scuola scuola = new Scuola(null, null);
         boolean continua = true;
+        ClasseScolastica classe = new ClasseScolastica(null);
 
         while (continua) {
             System.out.println("1. Aggiungi Classe");
@@ -59,24 +60,29 @@ public class Main {
                     }
                 }
                 case 4 -> {
-                    System.out.println("Nome classe: ");
-                    String nomeClasse = scanner.nextLine();
-                    ClasseScolastica classe1 = scuola.cercaClasse(nomeClasse);
-                    if (classe1 != null) {
-                        System.out.println("Materia: ");
-                        String materia = scanner.next();
-                        classe1.effettuaInterrogazione(materia);
+                    System.out.println("Inserisci il nome del docente: ");
+                    String nomeDocente = scanner.nextLine();
+                    Docente docente = scuola.cercaDocente(nomeDocente);
+                    if(docente != null) {
+                        classe.effettuaInterrogazione(docente);
+                    }
+                    else {
+                        System.out.println("Docente non trovato");
                     }
                 }
                 case 5 -> {
                     scuola.riepilogo();
                 }
                 case 6 -> {
-                    System.out.println("Nome Docente: ");
+                    System.out.println("Inserisci il nome del docente: ");
                     String nomeDocente = scanner.nextLine();
-                    
-
-
+                    Docente docente = scuola.cercaDocente(nomeDocente);
+                    if(docente != null) {
+                        docente.valutaPrestazione();
+                    }
+                    else {
+                        System.out.println("Docente non trovato");
+                    }
                 }
                 case 0 -> continua = false;
             }

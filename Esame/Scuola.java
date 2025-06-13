@@ -22,6 +22,22 @@ public class Scuola {
         }
         return null;
     }
+
+    public Docente cercaDocente(String nome)
+    {
+        for(ClasseScolastica c : classi)
+        {
+            for(Docente d : c.getListaDocenti())
+            {
+                if(d.getNome().equals(nome))
+                {
+                    return d;
+                }
+
+            }
+        }
+        return null;
+    }
     
     public void riepilogo() {
         for (int i=0; i<classi.size(); i++) {

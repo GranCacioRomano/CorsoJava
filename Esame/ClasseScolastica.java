@@ -7,6 +7,7 @@ public class ClasseScolastica {
     private String nomeClasse;
     private ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
     private ArrayList<Docente> listaDocenti = new ArrayList<Docente>();
+    private String[][] orarioLezioni = new String[5][8];
 
     public ClasseScolastica(String nomeClasse) 
     {
@@ -41,18 +42,6 @@ public class ClasseScolastica {
     public void setListaDocenti(ArrayList<Docente> listaDocenti)
     {
         this.listaDocenti = listaDocenti;
-    }
-
-    public Docente cercaDocente(String nome)
-    {
-        for (Docente docente : listaDocenti)
-        {
-            if(nome.equalsIgnoreCase(nome))
-            {
-                return docente;
-            }
-        }
-        return null;
     }
 
     public void aggiungiStudente(Studente studente)
@@ -123,7 +112,7 @@ public class ClasseScolastica {
         return ris;
     }
 
-    public void effettuaInterrogazione(String materia)
+    public void effettuaInterrogazione(Docente docente)
     {
         Random random = new Random();
         
@@ -132,11 +121,34 @@ public class ClasseScolastica {
 
         int voto = random.nextInt(7) + 4;
 
-        studente.aggiungiVoto(new Voto(materia, voto));
+        docente.assegnaVoto(studente, voto, docente.getMateria());
+        studente.aggiungiVoto(new Voto(docente.getMateria(), voto));
 
         System.out.println("Studente interrogato: " + studente.getNomeCompleto() + "\n" +
-                           "Materia: "              + materia                    + "\n" + 
+                           "Materia: "              + docente.getMateria()       + "\n" + 
                            "Voto: "                 + voto);
     }
 
+    public String stampaOrario()
+    {
+        String[] giorni = {"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì"};
+        String ris = "";
+
+        System.out.println("Orario settimanale della classe " + nomeClasse + ":");
+
+        for (int i = 0; i < giorni.length; i++) 
+        {
+            System.out.println(giorni[i] + ":");
+
+            for (int j = 0; j < 8; j++) 
+            {
+                String materia = orarioLezioni[i][j];
+                System.out.println(" Ora " + (j + 1) + ": " + materia);
+            }
+            System.out.println();
+        }
+
+        return ris;
+    }
+    
 }
