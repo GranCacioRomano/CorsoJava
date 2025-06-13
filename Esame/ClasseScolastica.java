@@ -45,7 +45,6 @@ public class ClasseScolastica {
         this.listaDocenti = listaDocenti;
     }
 
-    // Aggiungi/rimuovi studente
     public void aggiungiStudente(Studente studente)
     {
         listaStudenti.add(studente);
@@ -57,7 +56,6 @@ public class ClasseScolastica {
         System.out.println("Studente rimosso correttamente");
     }
 
-    // Aggiungi/rimuovi docente
     public void aggiungiDocente(Docente docente)
     {
         listaDocenti.add(docente);
@@ -72,7 +70,7 @@ public class ClasseScolastica {
     // extra: stampa orario, 
 
     // Media generale
-    public double calcolaMediaGenerale(ArrayList<Studente> listaStudenti)
+    public double calcolaMediaGenerale()
     {
         double mediaTotale = 0;
 

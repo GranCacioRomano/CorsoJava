@@ -27,9 +27,9 @@ public class Scuola {
         for (int i=0; i<classi.size(); i++) {
             ClasseScolastica c = classi.get(i);
             System.out.println("Classe: " + c.getNomeClasse());
-            System.out.println("Studenti: " + c.getStudenti().size());
-            System.out.println("Docenti: " + c.getDocenti().size());
-            System.out.println("Media Generale: " + c.mediaGenerale());   
+            System.out.println("Studenti: " + c.getListaStudenti().size());
+            System.out.println("Docenti: " + c.getListaDocenti().size());
+            System.out.println("Media Generale: " + c.calcolaMediaGenerale());   
         }
     }
 }

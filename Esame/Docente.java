@@ -2,10 +2,10 @@ package Esame;
 
 public class Docente extends Persona implements Valutabile {
     private String materia;
-    private int stipendio;
+    private double stipendio;
 
 
-    public Docente(String materia, int stipendio, String nome, String cognome, int eta)
+    public Docente(String materia, double stipendio, String nome, String cognome, int eta)
     {
         super(nome, cognome, eta);
         this.materia = materia;
@@ -13,7 +13,8 @@ public class Docente extends Persona implements Valutabile {
     }
 
     public void aumentaStipendio()
-    {
+    { 
+        stipendio += stipendio* 0.2;
     }
 
     @Override
