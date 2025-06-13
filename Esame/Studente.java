@@ -11,6 +11,11 @@ public class Studente extends Persona implements Valutabile {
         this.matricola = matricola;
     }
 
+    public void aggiungiVoto(Voto voto) 
+    {
+        listaVoti.add(voto);
+    }
+
     public double mediaVoti() {
         if (listaVoti.isEmpty()) {
             return 0;
