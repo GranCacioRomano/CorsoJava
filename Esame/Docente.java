@@ -7,9 +7,7 @@ public class Docente extends Persona implements Valutabile {
     private double stipendio;
     private ArrayList<Integer> valutazioniAssegnate = new ArrayList<Integer>();
 
-
-    public Docente(String materia, double stipendio, String nome, String cognome, int eta)
-    {
+    public Docente(String materia, double stipendio, String nome, String cognome, int eta) {
         super(nome, cognome, eta);
         this.materia = materia;
         this.stipendio = stipendio;
@@ -39,48 +37,43 @@ public class Docente extends Persona implements Valutabile {
         this.valutazioniAssegnate = valutazioniAssegnate;
     }
 
-    public void aumentaStipendio()
-    { 
-        stipendio += stipendio* 0.2;
+    public void aumentaStipendio() {
+        stipendio += stipendio * 0.2;
     }
 
-     public void assegnaVoto(Studente studente, int voto)
-    {
+    public void assegnaVoto(Studente studente, int voto) {
         studente.aggiungiVoto(new Voto(materia, voto));
         valutazioniAssegnate.add(voto);
     }
 
-
     @Override
-    public void valutaPrestazione() 
-    {
-       if(valutazioniAssegnate.isEmpty())
-       {
-           System.out.println("Non ci sono valutazioni assegnate");
-       }
-       
-       int somma = 0;
+    public void valutaPrestazione() {
+        if (valutazioniAssegnate.isEmpty()) {
+            System.out.println("Non ci sono valutazioni assegnate");
+        }
 
-       for(int v : valutazioniAssegnate)
-       {
-           somma += v;
-       }
+        int somma = 0;
 
-       double media = somma/valutazioniAssegnate.size();
+        for (int v : valutazioniAssegnate) {
+            somma += v;
+        }
 
-       if (media > 7) 
-       {
-            System.out.println("Docente " + getNomeCompleto() + " valutato positivamente con media: " + String.format("%.2f", media));
+        double media = somma / valutazioniAssegnate.size();
+
+        if (media > 7) {
+            System.out.println("Docente " + getNomeCompleto() + " valutato positivamente con media: "
+                    + String.format("%.2f", media));
             aumentaStipendio();
             System.out.println("Stipendio aumentato a " + String.format("%.2f", stipendio) + " euro");
-        } else 
-        {
-            System.out.println("Docente " + getNomeCompleto() + " non ha ricevuto aumento stipendio, media: " + String.format("%.2f", media));
+        } else {
+            System.out.println("Docente " + getNomeCompleto() + " non ha ricevuto aumento stipendio, media: "
+                    + String.format("%.2f", media));
         }
     }
 
     @Override
     public String descrizione() {
-        return "Docente: " + getNomeCompleto() + ", Materia: " + materia + ", Età: " + getEta() + ", Stipendio: " + stipendio + " euro";
+        return "Docente: " + getNomeCompleto() + ", Materia: " + materia + ", Età: " + getEta() + ", Stipendio: "
+                + stipendio + " euro";
     }
 }

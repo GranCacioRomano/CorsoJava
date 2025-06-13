@@ -9,12 +9,8 @@ public class Main {
         String nomeScuola = scanner.nextLine();
         Scuola scuola = new Scuola(nomeScuola);
 
-        // Dati di test - INIZIO
-
-        // Creo una classe
         ClasseScolastica classe1 = new ClasseScolastica("5A");
 
-        // Creo studenti
         Studente s1 = new Studente(1001, "Mario", "Rossi", 18);
         s1.aggiungiVoto(new Voto("Matematica", 8));
         s1.aggiungiVoto(new Voto("Italiano", 7));
@@ -27,24 +23,17 @@ public class Main {
         s3.aggiungiVoto(new Voto("Matematica", 9));
         s3.aggiungiVoto(new Voto("Italiano", 8));
 
-        // Aggiungo studenti alla classe
         classe1.aggiungiStudente(s1);
         classe1.aggiungiStudente(s2);
         classe1.aggiungiStudente(s3);
 
-        // Creo docenti
         Docente d1 = new Docente("Matematica", 1500.0, "Giuseppe", "Neri", 45);
         Docente d2 = new Docente("Italiano", 1400.0, "Laura", "Gialli", 38);
 
-        // Aggiungo docenti alla classe
         classe1.aggiungiDocente(d1);
         classe1.aggiungiDocente(d2);
 
-        // Aggiungo la classe alla scuola
         scuola.aggiungiClasse(classe1);
-
-        // Dati di test - FINE
-
         boolean continua = true;
 
         while (continua) {
@@ -59,10 +48,10 @@ public class Main {
             System.out.print("Scelta: ");
 
             int scelta = -1;
-            if(scanner.hasNextInt()) {
+            if (scanner.hasNextInt()) {
                 scelta = scanner.nextInt();
             }
-            scanner.nextLine(); // Consuma invio
+            scanner.nextLine();
 
             switch (scelta) {
                 case 1 -> {
@@ -70,6 +59,7 @@ public class Main {
                     String nomeClasse = scanner.nextLine();
                     scuola.aggiungiClasse(new ClasseScolastica(nomeClasse));
                     System.out.println("Classe aggiunta.");
+                    // sout delle classi presenti nella scuola.
                 }
                 case 2 -> {
                     System.out.print("Nome classe: ");
