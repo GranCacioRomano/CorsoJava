@@ -8,11 +8,9 @@ public class ClasseScolastica {
     private ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
     private ArrayList<Docente> listaDocenti = new ArrayList<Docente>();
 
-    public ClasseScolastica(String nomeClasse, ArrayList<Studente> listaStudenti, ArrayList<Docente> listaDocenti) 
+    public ClasseScolastica(String nomeClasse) 
     {
         this.nomeClasse = nomeClasse;
-        this.listaStudenti = listaStudenti;
-        this.listaDocenti = listaDocenti;
     }
 
     public String getNomeClasse() 
@@ -45,6 +43,18 @@ public class ClasseScolastica {
         this.listaDocenti = listaDocenti;
     }
 
+    public Docente cercaDocente(String nome)
+    {
+        for (Docente docente : listaDocenti)
+        {
+            if(nome.equalsIgnoreCase(nome))
+            {
+                return docente;
+            }
+        }
+        return null;
+    }
+
     public void aggiungiStudente(Studente studente)
     {
         listaStudenti.add(studente);
@@ -67,32 +77,28 @@ public class ClasseScolastica {
         System.out.println("Docente rimosso correttamente");
     }
 
-    // extra: stampa orario, 
-
-    // Media generale
     public double calcolaMediaGenerale()
     {
         double mediaTotale = 0;
 
         for(Studente studente : listaStudenti)
         {
-            mediaTotale += studente.calcolaMedia();
+            mediaTotale += studente.mediaVoti();
         }
         
         return mediaTotale / listaStudenti.size();
     }
 
-    // Migliore studente
-    public String miglioreStudente(ArrayList<Studente> listaStudenti)
+    public String miglioreStudente()
     {
         double mediaMigliore = 0;
-        String ris;
+        String ris = "";
 
         for(Studente studente : listaStudenti)
         {
-            if(studente.calcolaMedia() > mediaMigliore)
+            if(studente.mediaVoti() > mediaMigliore)
             {
-                mediaMigliore = studente.calcolaMedia();
+                mediaMigliore = studente.mediaVoti();
                 ris = "Il miglior studente è " + studente.getNomeCompleto() + " con una media di " + mediaMigliore;
             }
         }
@@ -100,17 +106,16 @@ public class ClasseScolastica {
         return ris;
     }
 
-    // Peggiore studente
-    public String peggiorStudente(ArrayList<Studente> listaStudenti)
+    public String peggiorStudente()
     {
         double mediaPeggiore = 10;
-        String ris;
+        String ris = "";
 
         for(Studente studente : listaStudenti)
         {
-            if(studente.calcolaMedia() < mediaPeggiore)
+            if(studente.mediaVoti() < mediaPeggiore)
             {
-                mediaPeggiore = studente.calcolaMedia();
+                mediaPeggiore = studente.mediaVoti();
                 ris = "Il peggiore studente è" + studente.getNomeCompleto() + " con una media di " + mediaPeggiore;
             }
         }
@@ -118,8 +123,7 @@ public class ClasseScolastica {
         return ris;
     }
 
-    // Effettua Interrogazione
-    public void effettuaInterrogazione(ArrayList<Studente> listaStudenti, String materia)
+    public void effettuaInterrogazione(String materia)
     {
         Random random = new Random();
         
@@ -128,12 +132,11 @@ public class ClasseScolastica {
 
         int voto = random.nextInt(7) + 4;
 
-        studente.aggiungiVoto(materia, voto);
+        studente.aggiungiVoto(new Voto(materia, voto));
 
-        System.out.println("Studente interrogato: " + studente.getNomecompleto() + "\n" +
+        System.out.println("Studente interrogato: " + studente.getNomeCompleto() + "\n" +
                            "Materia: "              + materia                    + "\n" + 
                            "Voto: "                 + voto);
     }
 
-    
 }
