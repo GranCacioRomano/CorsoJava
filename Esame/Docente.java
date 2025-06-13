@@ -46,6 +46,23 @@ public class Docente extends Persona implements Valutabile {
         valutazioniAssegnate.add(voto);
     }
 
+    public double mediaVoti()
+     {
+        if (valutazioniAssegnate.isEmpty()) 
+        {
+            return 0;
+        } 
+        else
+         {
+            double somma = 0;
+            for (int v : valutazioniAssegnate) 
+            {
+                somma += v;
+            }
+            return somma / valutazioniAssegnate.size();
+        }
+    }
+
     @Override
     public void valutaPrestazione() {
         if (valutazioniAssegnate.isEmpty()) {

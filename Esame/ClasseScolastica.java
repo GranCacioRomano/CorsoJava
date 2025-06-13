@@ -7,7 +7,6 @@ public class ClasseScolastica {
     private String nomeClasse;
     private ArrayList<Studente> listaStudenti = new ArrayList<Studente>();
     private ArrayList<Docente> listaDocenti = new ArrayList<Docente>();
-    private String[][] orarioLezioni = new String[5][8];
 
     public ClasseScolastica(String nomeClasse) 
     {
@@ -114,7 +113,47 @@ public class ClasseScolastica {
             if(studente.mediaVoti() < mediaPeggiore)
             {
                 mediaPeggiore = studente.mediaVoti();
-                ris = "Il peggiore studente è" + studente.getNomeCompleto() + " con una media di " + mediaPeggiore;
+                ris = "Il peggiore studente è " + studente.getNomeCompleto() + " con una media di " + mediaPeggiore;
+            }
+        }
+
+        return ris;
+    }
+
+     public String miglioreDocente()
+    {
+        if(listaDocenti.isEmpty())
+            return "Nessun docente presente";
+
+        double mediaMigliore = 0;
+        String ris = "";
+
+        for(Docente docente : listaDocenti)
+        {
+            if(docente.mediaVoti() > mediaMigliore)
+            {
+                mediaMigliore = docente.mediaVoti();
+                ris = "Il miglior studente è " + docente.getNomeCompleto() + " con una media di " + mediaMigliore;
+            }
+        }
+
+        return ris;
+    }
+
+    public String peggiorDocente()
+    {
+         if(listaDocenti.isEmpty())
+            return "Nessun docente presente";
+
+        double mediaPeggiore = 10;
+        String ris = "";
+
+        for(Docente docente : listaDocenti)
+        {
+            if(docente.mediaVoti() < mediaPeggiore)
+            {
+                mediaPeggiore = docente.mediaVoti();
+                ris = "Il peggiore docente è " + docente.getNomeCompleto() + " con una media di " + mediaPeggiore;
             }
         }
 
@@ -154,28 +193,6 @@ public class ClasseScolastica {
         System.out.println("Docente " + docenteMateria.getNomeCompleto() + " assegna voto " + voto);
 
         docenteMateria.assegnaVoto(studenteInterrogato, voto);
-    }
-
-    public String stampaOrario()
-    {
-        String[] giorni = {"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì"};
-        String ris = "";
-
-        System.out.println("Orario settimanale della classe " + nomeClasse + ":");
-
-        for (int i = 0; i < giorni.length; i++) 
-        {
-            System.out.println(giorni[i] + ":");
-
-            for (int j = 0; j < 8; j++) 
-            {
-                String materia = orarioLezioni[i][j];
-                System.out.println(" Ora " + (j + 1) + ": " + materia);
-            }
-            System.out.println();
-        }
-
-        return ris;
     }
     
 }

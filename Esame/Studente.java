@@ -20,7 +20,8 @@ public class Studente extends Persona implements Valutabile {
             return 0;
         } else {
             double somma = 0;
-            for (Voto v : listaVoti) {
+            for (Voto v : listaVoti) 
+            {
                 somma += v.getValutazioneNumerica();
             }
             return somma / listaVoti.size();

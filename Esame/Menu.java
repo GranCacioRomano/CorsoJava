@@ -177,9 +177,12 @@ public class Menu {
                                                " - Media voti: " + studente.mediaVoti());
                         }
 
-                        System.out.println("Media della classe: " + classe.calcolaMediaGenerale());
+                        System.out.println("Media della classe: " + classe.calcolaMediaGenerale() + "\n");
+                        System.out.println(classe.miglioreStudente());
+                        System.out.println(classe.peggiorStudente());
+                        System.out.println(classe.miglioreDocente());
+                        System.out.println(classe.peggiorDocente());
                     }
-
                     System.out.println("\nMedia totale della scuola: " + scuola.calcolaMediaTotaleScuola());
                     }
                 case 0 -> {
