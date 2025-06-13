@@ -11,8 +11,7 @@ public class Studente extends Persona implements Valutabile {
         this.matricola = matricola;
     }
 
-    public void aggiungiVoto(Voto voto) 
-    {
+    public void aggiungiVoto(Voto voto) {
         listaVoti.add(voto);
     }
 
@@ -39,7 +38,7 @@ public class Studente extends Persona implements Valutabile {
     @Override
     public void valutaPrestazione() {
         double media = mediaVoti();
-        
+
         if (media == 0) {
             System.out.println("Studente " + getNomeCompleto() + " non ha voti.");
         } else if (media >= 7) {
@@ -51,7 +50,8 @@ public class Studente extends Persona implements Valutabile {
 
     @Override
     public String descrizione() {
-        return "Studente: " + getNomeCompleto() + ", Età: " + getEta() + ", Matricola: " + matricola + " Media Voti: " + mediaVoti();
+        return "Studente: " + getNomeCompleto() + ", Età: " + getEta() + ", Matricola: " + matricola + " Media Voti: "
+                + mediaVoti();
     }
 
 }
