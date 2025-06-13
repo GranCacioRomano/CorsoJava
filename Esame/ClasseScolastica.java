@@ -68,6 +68,9 @@ public class ClasseScolastica {
 
     public double calcolaMediaGenerale()
     {
+        if(listaStudenti.isEmpty())
+            return 0;
+
         double mediaTotale = 0;
 
         for(Studente studente : listaStudenti)
@@ -80,6 +83,9 @@ public class ClasseScolastica {
 
     public String miglioreStudente()
     {
+        if(listaStudenti.isEmpty())
+            return "Nessun studente presente";
+
         double mediaMigliore = 0;
         String ris = "";
 
@@ -97,6 +103,9 @@ public class ClasseScolastica {
 
     public String peggiorStudente()
     {
+         if(listaStudenti.isEmpty())
+            return "Nessun studente presente";
+
         double mediaPeggiore = 10;
         String ris = "";
 
@@ -112,21 +121,32 @@ public class ClasseScolastica {
         return ris;
     }
 
-    public void effettuaInterrogazione(Docente docente)
-    {
-        Random random = new Random();
-        
-        int i = random.nextInt(listaStudenti.size());
-        Studente studente = listaStudenti.get(i);
+   public void effettuaInterrogazione(String materia) {
+        Docente docenteMateria = null;
+        for (Docente d : listaDocenti) {
+            if (d.getMateria().equalsIgnoreCase(materia)) {
+                docenteMateria = d;
+                break;
+            }
+        }
+        if (docenteMateria == null) {
+            System.out.println("Docente per la materia " + materia + " non trovato.");
+            return;
+        }
 
-        int voto = random.nextInt(7) + 4;
+        if (listaStudenti.isEmpty()) {
+            System.out.println("Nessuno studente nella classe.");
+            return;
+        }
 
-        docente.assegnaVoto(studente, voto, docente.getMateria());
-        studente.aggiungiVoto(new Voto(docente.getMateria(), voto));
+        Random rand = new Random();
+        Studente studenteInterrogato = listaStudenti.get(rand.nextInt(listaStudenti.size()));
+        int voto = rand.nextInt(7) + 4; 
 
-        System.out.println("Studente interrogato: " + studente.getNomeCompleto() + "\n" +
-                           "Materia: "              + docente.getMateria()       + "\n" + 
-                           "Voto: "                 + voto);
+        System.out.println("Studente interrogato: " + studenteInterrogato.getNomeCompleto());
+        System.out.println("Docente " + docenteMateria.getNomeCompleto() + " assegna voto " + voto);
+
+        docenteMateria.assegnaVoto(studenteInterrogato, voto);
     }
 
     public String stampaOrario()
