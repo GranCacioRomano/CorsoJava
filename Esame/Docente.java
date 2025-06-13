@@ -44,7 +44,7 @@ public class Docente extends Persona implements Valutabile {
         stipendio += stipendio* 0.2;
     }
 
-     public void assegnaVoto(Studente studente, int voto, String materia)
+     public void assegnaVoto(Studente studente, int voto)
     {
         studente.aggiungiVoto(new Voto(materia, voto));
         valutazioniAssegnate.add(voto);
@@ -68,14 +68,15 @@ public class Docente extends Persona implements Valutabile {
 
        double media = somma/valutazioniAssegnate.size();
 
-       if(media > 7)
+       if (media > 7) 
        {
-           System.out.println("Il docente è stato valutato positivamente");
-           aumentaStipendio();
-           System.out.println("Stipendio aumentato" + stipendio);
-       }
-       else
-       System.out.println("Nessun aumento dello stipendio");
+            System.out.println("Docente " + getNomeCompleto() + " valutato positivamente con media: " + String.format("%.2f", media));
+            aumentaStipendio();
+            System.out.println("Stipendio aumentato a " + String.format("%.2f", stipendio) + " euro");
+        } else 
+        {
+            System.out.println("Docente " + getNomeCompleto() + " non ha ricevuto aumento stipendio, media: " + String.format("%.2f", media));
+        }
     }
 
     @Override

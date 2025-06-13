@@ -38,10 +38,14 @@ public class Studente extends Persona implements Valutabile {
 
     @Override
     public void valutaPrestazione() {
-        if(mediaVoti() >= 6) {
-            System.out.println("Valutazione positiva");
+        double media = mediaVoti();
+        
+        if (media == 0) {
+            System.out.println("Studente " + getNomeCompleto() + " non ha voti.");
+        } else if (media >= 7) {
+            System.out.println("Studente " + getNomeCompleto() + " valutato positivamente con media: " + media);
         } else {
-            System.out.println("Valutazione negativa");
+            System.out.println("Studente " + getNomeCompleto() + " valutato negativamente con media: " + media);
         }
     }
 
